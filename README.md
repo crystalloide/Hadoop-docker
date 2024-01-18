@@ -73,6 +73,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 #### Fin du fichier yaml
 
+Note : On modifie la version de l'image en remplaçant "apache/hadoop:3" par "apache/hadoop:3.3.5" pour utiliser l'image Apache Hadoop 3.3.5
 
 docker pull apache/hadoop:latest
 
