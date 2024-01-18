@@ -148,24 +148,47 @@ docker compose up -d
 
 #### On peut se connecter à n'importe quel nœud en spécifiant le conteneur :
 
-    docker exec -it docker-3_namenode_1 /bin/bash 
+    docker exec -it hadoop-docker-namenode-1 /bin/bash 
+    
+#### On liste l'arboresence dans le stockage HDFS : il n' ya rien pour l'instant : 
 
-#### Exécuter un exemple de job (ici "Pi") :
+    hdfs dfs -ls /
 
-    yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.5.jar pi 10 15
+ #### On crée le répertoire "user" dans l'arborescence HDFS :  
+ 
+    bash-4.2$ hdfs dfs -mkdir /user
+    
+ #### On liste à nouveau  l'arboresence dans le stockage HDFS : 
+ 
+    bash-4.2$ hdfs dfs -ls /
+        Found 1 items
+        drwxr-xr-x   - hadoop supergroup          0 2024-01-18 18:14 /user
 
+#### On va maintenant exécuter un traitement : un job (ici un exemple fourni de base pour calculer "Pi") :
+    whereis yarn
+    Affichage :  
+    yarn: /opt/hadoop/bin/yarn 
+
+    /opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
+    
 #### Ce qui précède exécutera un job de calcul de Pi
 
 ####  Toute commande Hadoop pourra être exécutée en suivant la même méthode
 
 ### Accès à l'interface utilisateur : 
 
-#### L'interface utilisateur de Namenode (HDFS) est accessible à l'adresse http://localhost:9870/ 
+#### L'interface utilisateur de Namenode (HDFS) est accessible à l'adresse http://localhost:9870/   
+
+#### soit ici - dans mon exemple - : https://9870-crystalloid-hadoopdocke-vbmnlie61j2.ws-eu107.gitpod.io/dfshealth.html#tab-overview
 
 #### et l'interface utilisateur de ResourceManager (Yarn/MR) est accessible à l'adresse http://localhost:8088/
 
+#### soit ici - dans mon exemple - : https://8088-crystalloid-hadoopdocke-vbmnlie61j2.ws-eu107.gitpod.io/cluster
+
 ### Arrêt du cluster : 
+
 #### Le cluster peut être arrêté avec la commande suivante :
+
     docker compose down
     
 Note:
