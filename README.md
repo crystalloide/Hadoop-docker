@@ -75,9 +75,9 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 ### Note : On modifie la version de l'image en remplaçant "apache/hadoop:3" par "apache/hadoop:3.3.5" pour utiliser l'image Apache Hadoop 3.3.5
 
-- On crée ensuite le fichier de configuration :
+- On crée ensuite le fichier de configuration nommé "config" :
   
-#### Début du fichier de configuration :
+#### Début du fichier de configuration : 
 
     CORE-SITE.XML_fs.default.name=hdfs://namenode
     CORE-SITE.XML_fs.defaultFS=hdfs://namenode
@@ -108,66 +108,78 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 #### Fin du fichier de configuration
 
+### Note :  on peut modifier et attribuer n'importe quelle nouvelle configuration dans un format similaire dans ce fichier.
 
-docker pull apache/hadoop:latest
+### On vérifier la présenc edes ficheirs précédents dans le répertoire actuel :
 
-docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-enterprise-server:latest
+    ls -l
 
-## Pour voir le conteneur lancé qui porte le moteur mongoDB : 
+#### Affichage : 
 
-docker ps -a
-
-## Pour arrêter l'instance lancée : 
-
-docker stop mongodb
-
-docker ps -a
+    docker-3 % ls -l
+    -rw-r--r--  1 hadoop  apache  2547 Jun 23 15:53 config
+    -rw-r--r--  1 hadoop  apache  1533 Jun 23 16:07 docker-compose.yaml
 
 
-# 2nde façon d'utiliser MongoDB : via instalaltion des packages : 
+### Lancement des conteneurs Docker avec docker compose :
 
-wget -qO- https://www.mongodb.org/static/pgp/server-7.0.asc | sudo tee /etc/apt/trusted.gpg.d/server-7.0.asc
+docker compose up -d
 
-sudo apt-get install gnupg
+#### Affichage : 
 
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+    Creating network "docker-3_default" with the default driver
+    Creating docker-3_namenode_1        ... done
+    Creating docker-3_datanode_1        ... done
+    Creating docker-3_nodemanager_1     ... done
+    Creating docker-3_resourcemanager_1 ... done
 
-sudo apt-get update
+### Accès au cluster :
 
-sudo apt-get install -y mongodb-mongosh
+#### On se connecte à un nœud :
 
-sudo apt-get install -y mongodb-org
+#### On peut se connecter à n'importe quel nœud en spécifiant le conteneur :
 
-sudo apt-get install net-tools
+    docker exec -it docker-3_namenode_1 /bin/bash 
 
-mkdir data
+#### Exécuter un exemple de job (ici "Pi") :
 
-mongod --dbpath /workspace/mongoDB/data 
+    yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.5.jar pi 10 15
 
-mongosh
+#### Ce qui précède exécutera un job de calcul de Pi
 
-## Affichage de la version de mongoDB : 
-## test> db.version();
-## 7.0.4
+####  Toute commande Hadoop pourra être exécutée en suivant la même méthode
 
-show dbs;
+### Accès à l'interface utilisateur : 
 
-use admin;
+#### L'interface utilisateur de Namenode (HDFS) est accessible à l'adresse http://localhost:9870/ 
 
-show collections;
+#### et l'interface utilisateur de ResourceManager (Yarn/MR) est accessible à l'adresse http://localhost:8088/
 
-use local;
+### Arrêt du cluster : 
+#### Le cluster peut être arrêté avec la commande suivante :
+    docker compose down
+    
+Note:
 
-show collections;
+L'exemple ci-dessus concerne la ligne Hadoop-3.x. 
 
-db.startup_log.find().limit(10);
+Si vous souhaitez créer Hadoop-2.x, les étapes similaires mais les fichiers docker-compose.yaml et config sont différents.
 
-db.startup_log.find().limit(10).pretty;
+Voir ici : https://github.com/apache/hadoop/tree/docker-hadoop-2
 
 
-## Pour sortir du client shell mongosh : 
-quit
+Code source du Docker :
 
-## En adaptant en fonction du nom de votre workspace :  https://27017-crystalloide-mongodb-lygen7vizjf.ws-eu105.gitpod.io/
+Les images Docker sont créées via des branches et le code source 
+
+- de la branche 3 se trouve à https://github.com/apache/hadoop/tree/docker-hadoop-3
+  
+- et pour la branche 2 à https://github.com/apache/hadoop/tree/docker-hadoop-2
+  
+
+Pour contacter les développeurs Hadoop : https://hadoop.apache.org/mailing_lists.html
+
+Lectures complémentaires : https://hadoop.apache.org/
+
 
 # Fin du TP
