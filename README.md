@@ -40,34 +40,63 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 >
 >version: "2"
+>
 >   namenode:
+>
 >      image: apache/hadoop:3
+>
 >      hostname: namenode
+>
 >      command: ["hdfs", "namenode"]
+>
 >        - 9870:9870
+>
 >      env_file:
+>
 >        - ./config
+>
 >      environment:
+>
 >          ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+>
 >   datanode:
+>
 >      image: apache/hadoop:3
+>
 >      command: ["hdfs", "datanode"]
+>
 >      env_file:
->        - ./config      
->   resourcemanager:
->      image: apache/hadoop:3
->      hostname: resourcemanager
->      command: ["yarn", "resourcemanager"]
->      ports:
->         - 8088:8088
->      env_file:
+>
 >        - ./config
->      volumes:
->        - ./test.sh:/opt/test.sh
->   nodemanager:
+>
+>   resourcemanager:
+>
 >      image: apache/hadoop:3
->      command: ["yarn", "nodemanager"]
+>
+>      hostname: resourcemanager
+>
+>      command: ["yarn", "resourcemanager"]
+> 
+>      ports:
+>
+>         - 8088:8088
+>
 >      env_file:
+>
+>        - ./config
+>
+>      volumes:
+>
+>        - ./test.sh:/opt/test.sh
+>
+>   nodemanager:
+>
+>      image: apache/hadoop:3
+>
+>      command: ["yarn", "nodemanager"]
+>
+>      env_file:
+>
 >        - ./config
 >
 >
