@@ -1,17 +1,37 @@
-# MongoDB : installation lancement et utilisation dans gitpod
+# Hadoop : installation lancement et utilisation dans gitpod
 
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/crystalloide/mongoDB)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/crystalloide/Hadoop-docker)
 
-## https://github.com/crystalloide/mongoDB
+## https://github.com/crystalloide/Hadoop-docker
 
 ## https://gitpod.io/workspaces
 
-# 1ère façon d'utiliser MongoDB : via docker : 
+## https://hub.docker.com/r/apache/hadoop
+
+
+Apache Hadoop
+
+Apache Hadoop est un framework qui permet le traitement distribué de grands ensembles de données sur des clusters d'ordinateurs,
+
+à l'aide de modèles de programmation simples. 
+
+Il est conçu pour passer d'un seul serveur à des milliers de machines, chacune offrant un calcul et un stockage locaux. 
+
+Plutôt que de s'appuyer sur du matériel pour offrir une haute disponibilité, la bibliothèque elle-même est conçue pour détecter 
+
+et gérer les pannes au niveau de la couche application, 
+
+fournissant ainsi un service hautement disponible au-dessus d'un cluster d'ordinateurs, 
+
+dont chacun peut être sujet à des pannes.
+
+
+# Via docker : 
 
 ## https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-with-docker/
 
-docker pull mongodb/mongodb-enterprise-server:latest
+docker pull apache/hadoop:latest
 
 docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-enterprise-server:latest
 
