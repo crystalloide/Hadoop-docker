@@ -132,6 +132,16 @@ docker compose up -d
     Creating docker-3_nodemanager_1     ... done
     Creating docker-3_resourcemanager_1 ... done
 
+#### Affichage des conteneurs lancés : 
+
+    gitpod /workspace/Hadoop-docker (main) $ docker ps -a
+    CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+    0e61cf32a87f   apache/hadoop:3   "/usr/local/bin/dumb…"   41 seconds ago   Up 39 seconds   0.0.0.0:9870->9870/tcp, :::9870->9870/tcp   hadoop-docker-namenode-1
+    48d4fc88a505   apache/hadoop:3   "/usr/local/bin/dumb…"   41 seconds ago   Up 40 seconds                                               hadoop-docker-nodemanager-1
+    961e25bf5067   apache/hadoop:3   "/usr/local/bin/dumb…"   41 seconds ago   Up 39 seconds   0.0.0.0:8088->8088/tcp, :::8088->8088/tcp   hadoop-docker-resourcemanager-1
+    0dc8c4eb8516   apache/hadoop:3   "/usr/local/bin/dumb…"   41 seconds ago   Up 39 seconds                                               hadoop-docker-datanode-1
+
+
 ### Accès au cluster :
 
 #### On se connecte à un nœud :
