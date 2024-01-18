@@ -34,7 +34,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 ## Exemple de création de la dernière image hadoop-3 
 
-- Créer tout d'abord un fichier docker-compose.yaml :
+- On crée tout d'abord le fichier docker-compose.yaml :
 
 #### début du fichier yaml :
 
@@ -116,7 +116,6 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 #### Affichage : 
 
-    docker-3 % ls -l
     -rw-r--r--  1 hadoop  apache  2547 Jun 23 15:53 config
     -rw-r--r--  1 hadoop  apache  1533 Jun 23 16:07 docker-compose.yaml
 
