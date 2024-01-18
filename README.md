@@ -79,6 +79,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
   
 #### Début du fichier de configuration : 
 
+    HADOOP_HOME=/opt/hadoop/
     CORE-SITE.XML_fs.default.name=hdfs://namenode
     CORE-SITE.XML_fs.defaultFS=hdfs://namenode
     HDFS-SITE.XML_dfs.namenode.rpc-address=namenode:8020
