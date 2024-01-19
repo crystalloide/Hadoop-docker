@@ -159,12 +159,19 @@ docker compose up -d
  #### On crée le répertoire "user" dans l'arborescence HDFS :  
  
     hdfs dfs -mkdir /user
-    
+
  #### On liste à nouveau  l'arboresence dans le stockage HDFS : 
  
     hdfs dfs -ls /
         Found 1 items
         drwxr-xr-x   - hadoop supergroup          0 2024-01-18 18:14 /user
+
+#### Autre façon de faire : 
+
+    hdfs dfs -mkdir hdfs://namenode:8020/data
+    hdfs dfs -ls hdfs://namenode:8020/
+        Found 1 items
+        drwxr-xr-x   - hadoop supergroup          0 2024-01-19 13:46 hdfs://namenode:8020/data
 
 #### On va maintenant exécuter un traitement : un job (ici un exemple fourni de base pour calculer "Pi") :
     whereis yarn
