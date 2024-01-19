@@ -111,7 +111,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 ### Note :  on peut modifier et attribuer n'importe quelle nouvelle configuration dans un format similaire dans ce fichier.
 
-### On vérifier la présenc edes ficheirs précédents dans le répertoire actuel :
+### On vérifie la présence des fichiers précédents dans le répertoire actuel :
 
     ls -l
 
