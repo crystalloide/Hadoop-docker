@@ -158,11 +158,11 @@ docker compose up -d
 
  #### On crée le répertoire "user" dans l'arborescence HDFS :  
  
-    bash-4.2$ hdfs dfs -mkdir /user
+    hdfs dfs -mkdir /user
     
  #### On liste à nouveau  l'arboresence dans le stockage HDFS : 
  
-    bash-4.2$ hdfs dfs -ls /
+    hdfs dfs -ls /
         Found 1 items
         drwxr-xr-x   - hadoop supergroup          0 2024-01-18 18:14 /user
 
