@@ -43,3 +43,12 @@ Et ajouter :
 <property><name>mapreduce.map.env</name><value>HADOOP_MAPRED_HOME=/opt/hadoop/share/hadoop/</value></property>
 <property><name>yarn.app.mapreduce.am.env</name><value>HADOOP_MAPRED_HOME=/opt/hadoop/share/hadoop/</value></property>
 </configuration>
+
+
+
+
+
+
+sudo yum install net-tools
+
+netstat -l
