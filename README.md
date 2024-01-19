@@ -152,7 +152,8 @@ docker compose up -d
     docker exec -it hadoop-docker-namenode-1 /bin/bash 
     
 #### On liste l'arboresence dans le stockage HDFS : il n' ya rien pour l'instant : 
-
+   
+    cd /opt/hadoop/bin/hdfs
     hdfs dfs -ls /
 
  #### On crée le répertoire "user" dans l'arborescence HDFS :  
