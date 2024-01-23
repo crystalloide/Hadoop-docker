@@ -217,9 +217,17 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 ### Arrêt du cluster : 
 
-#### Le cluster peut être arrêté avec la commande suivante :
+#### Remarque : bien penser à sortir du conteneur si on est encore connecté suite au "docker exec -it" précédent : 
+
+    exit 
+
+#### Le cluster peut maintenant être arrêté avec la commande suivante :
 
     docker compose down
+    
+#### Ou, si on avait choisi le cluster plus fourni en version 3.3.6, avec la commande explicite :
+
+    docker compose -f docker-compose-cluster-latest.yml down
     
 Note:
 
