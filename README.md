@@ -125,7 +125,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
     docker compose up -d
 
-#### Ou si on veut un cluster plus fourni en verison 3.3.6 :
+#### Ou si on veut un cluster plus fourni en version 3.3.6 :
     docker compose -f docker-compose-cluster-latest.yml up -d
     
 #### Affichage : 
@@ -182,10 +182,28 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
     yarn: /opt/hadoop/bin/yarn 
 
     /opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
-    
+
 #### Ce qui précède exécutera un job de calcul de Pi
 
-####  Toute commande Hadoop pourra être exécutée en suivant la même méthode
+####  Toute commande Hadoop pourra être exécutée en suivant la même méthode : ici un comptage de mot (wordcount) : 
+
+    hdfs dfs -mkdir hdfs://namenode:8020/data/input
+    hdfs dfs -mkdir hdfs://namenode:8020/data/output    
+    hdfs dfs -ls hdfs://namenode:8020/data/input
+
+    vi pg100.txt
+    ## copier le contenu suivant et sauvegardant en quittant avec :wq 
+    ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
+    ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
+
+    hdfs dfs -put pg100.txt hdfs://namenode:8020/data/input/pg100.txt
+    hdfs dfs -ls hdfs://namenode:8020/data/input
+    
+    /opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar wordcount /data/input/pg100.txt /data/output/wc1
+   
+    hdfs dfs -ls hdfs://namenode:8020/data/output/wc1
+    hdfs dfs -cat hdfs://namenode:8020/data/output/wc1/part-r-00000
+    
 
 ### Accès à l'interface utilisateur : 
 
