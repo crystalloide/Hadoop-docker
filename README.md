@@ -123,8 +123,11 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 ### Lancement des conteneurs Docker avec docker compose :
 
-docker compose up -d
+    docker compose up -d
 
+#### Ou si on veut un cluster plus fourni en verison 3.3.6 :
+    docker compose -f docker-compose-cluster-latest.yml up -d
+    
 #### Affichage : 
 
     Creating network "docker-3_default" with the default driver
