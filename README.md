@@ -1,7 +1,16 @@
 # Hadoop : installation lancement et utilisation dans gitpod
 
+## Open in Gitpod
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/crystalloide/Hadoop-docker)
+
+### Open in codespaces 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/crystalloide/Hadoop-docker)
+
+###  Open in Codeanywhere
+
+ [![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/crystalloide/Hadoop-docker)
+
 
 ## https://github.com/crystalloide/Hadoop-docker
 
