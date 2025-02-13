@@ -157,16 +157,19 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 #### On liste l'arboresence dans le stockage HDFS : il n' ya rien pour l'instant : 
    
     cd /opt/hadoop/bin/
+    
     hdfs dfs -ls /
 
- #### On crée le répertoire "user" dans l'arborescence HDFS :  
+#### On crée le répertoire "user" dans l'arborescence HDFS :  
  
     hdfs dfs -mkdir /user
 
- #### On liste à nouveau  l'arboresence dans le stockage HDFS : 
+#### On liste à nouveau  l'arboresence dans le stockage HDFS : 
  
     hdfs dfs -ls /
-        Found 1 items
+    
+##### Affichage : 
+        found 1 items
         drwxr-xr-x   - hadoop supergroup          0 2024-01-18 18:14 /user
 
 #### Autre façon de faire : 
@@ -201,7 +204,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 ##### On pousse ensuite le fichier local dans le stockage HDFS :    
     hdfs dfs -put pg100.txt hdfs://namenode:8020/data/input/pg100.txt
     
-##### On vérifie enfin que le ficheir est bien arrivé dans HDFS :       
+##### On vérifie enfin que le fichier est bien arrivé dans HDFS :       
     hdfs dfs -ls hdfs://namenode:8020/data/input
     
 ##### Autre façon de lister le contenu d'un fichier dans HDFS :    
