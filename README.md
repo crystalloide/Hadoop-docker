@@ -205,7 +205,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
     hdfs dfs -ls hdfs://namenode:8020/data/input
     
 ##### Autre façon de lister le contenu d'un fichier dans HDFS :    
-    bash-4.2$ hdfs dfs -cat hdfs://namenode:8020/data/input/pg100.txt
+    hdfs dfs -cat hdfs://namenode:8020/data/input/pg100.txt
 
 ##### contenu : 
     ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
