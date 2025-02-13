@@ -190,18 +190,34 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
     hdfs dfs -mkdir hdfs://namenode:8020/data/input
     hdfs dfs -mkdir hdfs://namenode:8020/data/output    
     hdfs dfs -ls hdfs://namenode:8020/data/input
-
+    
+##### On crée localement sur le noeud du ccluster Hadoop un fichier, que l'on copie ensuite dans HDFS :    
     vi pg100.txt
-    ## copier le contenu suivant et sauvegardant en quittant avec :wq 
+    
+#### On copie le contenu suivant et ensuite on sauvegarde en quittant avec :wq 
     ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
     ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
-
+    
+##### On pousse ensuite le fichier local dans le stockage HDFS :    
     hdfs dfs -put pg100.txt hdfs://namenode:8020/data/input/pg100.txt
+    
+##### On vérifie enfin que le ficheir est bien arrivé dans HDFS :       
     hdfs dfs -ls hdfs://namenode:8020/data/input
     
+##### Autre façon de lister le contenu d'un fichier dans HDFS :    
+    bash-4.2$ hdfs dfs -cat hdfs://namenode:8020/data/input/pg100.txt
+
+##### contenu : 
+    ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
+    ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
+    
+ ##### On lance maintenant le comptage de mots contenus dans ce fichier :     
     /opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar wordcount /data/input/pg100.txt /data/output/wc1
-   
+    
+  ##### On regarde le résultat du comptage :       
     hdfs dfs -ls hdfs://namenode:8020/data/output/wc1
+    
+  ##### On regarde le résultat du comptage (suite) :        
     hdfs dfs -cat hdfs://namenode:8020/data/output/wc1/part-r-00000
     
 
