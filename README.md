@@ -125,7 +125,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
     docker compose up -d
 
-#### Ou si on veut un cluster plus fourni en version 3.3.6 :
+#### Ou si on veut un cluster plus fourni en version 3.3.5 :
     docker compose -f docker-compose-cluster-latest.yml up -d
     
 #### Affichage : 
@@ -154,7 +154,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
     docker exec -it hadoop-docker-namenode-1 /bin/bash 
     
-#### On liste l'arboresence dans le stockage HDFS : il n' ya rien pour l'instant : 
+#### On liste l'arboresence dans le stockage HDFS : il n'y a rien pour l'instant : 
    
     cd /opt/hadoop/bin/
     
@@ -186,7 +186,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
     /opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
 
-#### Ce qui précède exécutera un job de calcul de Pi
+#### Ce qui précède exécutera un job de calcul de PI
 
 ####  Toute commande Hadoop pourra être exécutée en suivant la même méthode : ici un comptage de mot (wordcount) : 
 
@@ -194,7 +194,7 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
     hdfs dfs -mkdir hdfs://namenode:8020/data/output    
     hdfs dfs -ls hdfs://namenode:8020/data/input
     
-##### On crée localement sur le noeud du ccluster Hadoop un fichier, que l'on copie ensuite dans HDFS :    
+##### On crée localement sur le noeud du cluster Hadoop un fichier, que l'on copie ensuite dans HDFS :    
     vi pg100.txt
     
 #### On copie le contenu suivant et ensuite on sauvegarde en quittant avec :wq 
