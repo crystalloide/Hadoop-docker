@@ -38,8 +38,8 @@ Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et e
 
 #### début du fichier yaml :
 
-    
-    version: "2"
+services:
+# Environnement hadoop #
     namenode:
           image: apache/hadoop:3
           hostname: namenode
