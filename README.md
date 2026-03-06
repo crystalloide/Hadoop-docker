@@ -263,12 +263,13 @@ hdfs dfs -cat hdfs://namenode:8020/data/output/wc1/part-r-00000
 ```bash
 exit 
 ```
+
 #### Le cluster peut maintenant être arrêté avec la commande suivante :
 ```bash
 docker compose down
-``    
-#### Ou, si on avait choisi le cluster plus fourni en version 3.3.6, avec la commande explicite :
+```
 
+#### Ou, si on avait choisi le cluster plus fourni en version 3.3.6, avec la commande explicite :
 ```bash
 docker compose -f docker-compose-cluster-latest.yml down
 ```
