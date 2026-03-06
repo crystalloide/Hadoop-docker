@@ -106,29 +106,29 @@ services:
     CAPACITY-SCHEDULER.XML_yarn.scheduler.capacity.queue-mappings=
     CAPACITY-SCHEDULER.XML_yarn.scheduler.capacity.queue-mappings-override.enable=false
 ```
-#### Fin du fichier de configuration
+##### Fin du fichier de configuration
 
-### Note :  on peut modifier et attribuer n'importe quelle nouvelle configuration dans un format similaire dans ce fichier.
+##### Note :  on peut modifier et attribuer n'importe quelle nouvelle configuration dans un format similaire dans ce fichier.
 
-### On vérifie la présence des fichiers précédents dans le répertoire actuel :
+##### On vérifie la présence des fichiers précédents dans le répertoire actuel :
 ```bash
     ls -l
 ```
-#### Affichage : 
+##### Affichage : 
 
     -rw-r--r--  1 hadoop  apache  2547 Jun 23 15:53 config
     -rw-r--r--  1 hadoop  apache  1533 Jun 23 16:07 docker-compose.yaml
 
 
-### Lancement des conteneurs Docker avec docker compose :
+##### Lancement des conteneurs Docker avec docker compose :
 ```bash
     docker compose up -d
 ```
-#### Ou si on veut un cluster plus fourni en version 3.3.5 :
+##### Ou si on veut un cluster plus fourni en version 3.3.5 :
 ```bash
     docker compose -f docker-compose-cluster-latest.yml up -d
  ```   
-#### Affichage : 
+##### Affichage : 
 
     Creating network "docker-3_default" with the default driver
     Creating docker-3_namenode_1        ... done
@@ -136,7 +136,7 @@ services:
     Creating docker-3_nodemanager_1     ... done
     Creating docker-3_resourcemanager_1 ... done
 
-#### Affichage des conteneurs lancés : 
+##### Affichage des conteneurs lancés : 
 
     gitpod /workspace/Hadoop-docker (main) $ docker ps -a
     CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                       NAMES
@@ -146,26 +146,26 @@ services:
     0dc8c4eb8516   apache/hadoop:3   "/usr/local/bin/dumb…"   41 seconds ago   Up 39 seconds                                               hadoop-docker-datanode-1
 
 
-### Accès au cluster :
+##### Accès au cluster :
 
-#### On se connecte à un nœud :
+##### On se connecte à un nœud :
 
-#### On peut se connecter à n'importe quel nœud en spécifiant le conteneur :
+##### On peut se connecter à n'importe quel nœud en spécifiant le conteneur :
 ```bash
     docker exec -it hadoop-docker-namenode-1 /bin/bash 
 ```    
-#### On liste l'arboresence dans le stockage HDFS : il n'y a rien pour l'instant : 
+##### On liste l'arboresence dans le stockage HDFS : il n'y a rien pour l'instant : 
  ```bash  
     cd /opt/hadoop/bin/
 ```
 ```bash 
     hdfs dfs -ls /
 ```
-#### On crée le répertoire "user" dans l'arborescence HDFS :  
+##### On crée le répertoire "user" dans l'arborescence HDFS :  
 ```bash
     hdfs dfs -mkdir /user
 ```
-#### On liste à nouveau  l'arboresence dans le stockage HDFS : 
+##### On liste à nouveau  l'arboresence dans le stockage HDFS : 
 ```bash 
     hdfs dfs -ls /
 ```    
@@ -173,7 +173,7 @@ services:
         found 1 items
         drwxr-xr-x   - hadoop supergroup          0 2024-01-18 18:14 /user
 
-#### Autre façon de faire : 
+##### Autre façon de faire : 
 ```bash
     hdfs dfs -mkdir hdfs://namenode:8020/data
     hdfs dfs -ls hdfs://namenode:8020/
@@ -181,7 +181,7 @@ services:
         Found 1 items
         drwxr-xr-x   - hadoop supergroup          0 2024-01-19 13:46 hdfs://namenode:8020/data
 
-#### On va maintenant exécuter un traitement : un job (ici un exemple fourni de base pour calculer "Pi") :
+##### On va maintenant exécuter un traitement : un job (ici un exemple fourni de base pour calculer "Pi") :
 ```bash
     whereis yarn
 ```
@@ -191,9 +191,9 @@ services:
 
     /opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
 
-#### Ce qui précède exécutera un job de calcul de PI
+##### Ce qui précède exécutera un job de calcul de PI
 
-####  Toute commande Hadoop pourra être exécutée en suivant la même méthode : ici un comptage de mot (wordcount) : 
+##### Toute commande Hadoop pourra être exécutée en suivant la même méthode : ici un comptage de mot (wordcount) : 
 ```bash
     hdfs dfs -mkdir hdfs://namenode:8020/data/input
     hdfs dfs -mkdir hdfs://namenode:8020/data/output    
@@ -204,7 +204,7 @@ services:
 ```bash
     vi pg100.txt
 ```
-#### On copie le contenu suivant et ensuite on sauvegarde en quittant avec :wq 
+##### On copie le contenu suivant et ensuite on sauvegarde en quittant avec :wq 
 ```bash
     ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
     ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
@@ -241,7 +241,7 @@ services:
     hdfs dfs -cat hdfs://namenode:8020/data/output/wc1/part-r-00000
 ``` 
 
-### Accès à l'interface utilisateur : 
+##### Accès à l'interface utilisateur : 
 
 #### L'interface utilisateur de Namenode (HDFS) est accessible à l'adresse http://localhost:9870/   
 
@@ -251,7 +251,7 @@ services:
 
 #### soit ici - dans mon exemple - : https://8088-crystalloid-hadoopdocke-vbmnlie61j2.ws-eu107.gitpod.io/cluster
 
-### Arrêt du cluster : 
+##### Arrêt du cluster : 
 
 #### Remarque : bien penser à sortir du conteneur si on est encore connecté suite au "docker exec -it" précédent : 
 ```bash
@@ -267,7 +267,7 @@ services:
     docker compose -f docker-compose-cluster-latest.yml down
 ```
 
-Note:
+##### Note:
 
 L'exemple ci-dessus concerne la ligne Hadoop-3.x. 
 
@@ -276,7 +276,7 @@ Si vous souhaitez créer Hadoop-2.x, les étapes similaires mais les fichiers do
 Voir ici : https://github.com/apache/hadoop/tree/docker-hadoop-2
 
 
-Code source du Docker :
+##### Code source du Docker :
 
 Les images Docker sont créées via des branches et le code source 
 
