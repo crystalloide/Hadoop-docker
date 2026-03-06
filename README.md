@@ -12,23 +12,17 @@
 
 #### Apache Hadoop
 
-Apache Hadoop est un framework qui permet le traitement distribué de grands ensembles de données sur des clusters d'ordinateurs,
-
-à l'aide de modèles de programmation simples. 
-
-Il est conçu pour passer d'un seul serveur à des milliers de machines, chacune offrant un calcul et un stockage locaux. 
-
-Plutôt que de s'appuyer sur du matériel pour offrir une haute disponibilité, la bibliothèque elle-même est conçue pour détecter 
-
-et gérer les pannes au niveau de la couche application, 
-
-fournissant ainsi un service hautement disponible au-dessus d'un cluster d'ordinateurs, 
-
-dont chacun peut être sujet à des pannes.
+    Apache Hadoop est un framework qui permet le traitement distribué de grands ensembles de données sur des clusters d'ordinateurs,
+    à l'aide de modèles de programmation simples. 
+    Il est conçu pour passer d'un seul serveur à des milliers de machines, chacune offrant un calcul et un stockage locaux. 
+    Plutôt que de s'appuyer sur du matériel pour offrir une haute disponibilité, la bibliothèque elle-même est conçue pour détecter 
+    et gérer les pannes au niveau de la couche application, 
+    fournissant ainsi un service hautement disponible au-dessus d'un cluster d'ordinateurs, 
+    dont chacun peut être sujet à des pannes.
 
 #### Démarrage rapide
 
-Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et en spécifiant les configurations requises.
+    Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et en spécifiant les configurations requises.
 
 #### Exemple donc via docker : 
 
