@@ -112,7 +112,7 @@ services:
 
 ##### On vérifie la présence des fichiers précédents dans le répertoire actuel :
 ```bash
-    ls -l
+ls -l
 ```
 ##### Affichage : 
 
@@ -122,11 +122,11 @@ services:
 
 ##### Lancement des conteneurs Docker avec docker compose :
 ```bash
-    docker compose up -d
+docker compose up -d
 ```
 ##### Ou si on veut un cluster plus fourni en version 3.3.5 :
 ```bash
-    docker compose -f docker-compose-cluster-latest.yml up -d
+docker compose -f docker-compose-cluster-latest.yml up -d
  ```   
 ##### Affichage : 
 
@@ -156,18 +156,18 @@ services:
 ```    
 ##### On liste l'arboresence dans le stockage HDFS : il n'y a rien pour l'instant : 
  ```bash  
-    cd /opt/hadoop/bin/
+cd /opt/hadoop/bin/
 ```
 ```bash 
-    hdfs dfs -ls /
+hdfs dfs -ls /
 ```
 ##### On crée le répertoire "user" dans l'arborescence HDFS :  
 ```bash
-    hdfs dfs -mkdir /user
+hdfs dfs -mkdir /user
 ```
 ##### On liste à nouveau  l'arboresence dans le stockage HDFS : 
 ```bash 
-    hdfs dfs -ls /
+hdfs dfs -ls /
 ```    
 ##### Affichage : 
         found 1 items
@@ -175,15 +175,17 @@ services:
 
 ##### Autre façon de faire : 
 ```bash
-    hdfs dfs -mkdir hdfs://namenode:8020/data
-    hdfs dfs -ls hdfs://namenode:8020/
+hdfs dfs -mkdir hdfs://namenode:8020/data
+```
+```bash
+hdfs dfs -ls hdfs://namenode:8020/
 ```
         Found 1 items
         drwxr-xr-x   - hadoop supergroup          0 2024-01-19 13:46 hdfs://namenode:8020/data
 
 ##### On va maintenant exécuter un traitement : un job (ici un exemple fourni de base pour calculer "Pi") :
 ```bash
-    whereis yarn
+whereis yarn
 ```
 
     Affichage :  
@@ -195,50 +197,54 @@ services:
 
 ##### Toute commande Hadoop pourra être exécutée en suivant la même méthode : ici un comptage de mot (wordcount) : 
 ```bash
-    hdfs dfs -mkdir hdfs://namenode:8020/data/input
-    hdfs dfs -mkdir hdfs://namenode:8020/data/output    
-    hdfs dfs -ls hdfs://namenode:8020/data/input
+hdfs dfs -mkdir hdfs://namenode:8020/data/input
+```
+```bash
+hdfs dfs -mkdir hdfs://namenode:8020/data/output
+```
+```bash  
+hdfs dfs -ls hdfs://namenode:8020/data/input
 ```
    
 ##### On crée localement sur le noeud du cluster Hadoop un fichier, que l'on copie ensuite dans HDFS :
 ```bash
-    vi pg100.txt
+vi pg100.txt
 ```
 ##### On copie le contenu suivant et ensuite on sauvegarde en quittant avec :wq 
 ```bash
-    ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
-    ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
+ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
+ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
 ```
 ##### On pousse ensuite le fichier local dans le stockage HDFS :    
 ```bash
-    hdfs dfs -put pg100.txt hdfs://namenode:8020/data/input/pg100.txt
+hdfs dfs -put pg100.txt hdfs://namenode:8020/data/input/pg100.txt
 ```
 ##### On vérifie enfin que le fichier est bien arrivé dans HDFS :       
 ```bash
-    hdfs dfs -ls hdfs://namenode:8020/data/input
+hdfs dfs -ls hdfs://namenode:8020/data/input
 ```
     
 ##### Autre façon de lister le contenu d'un fichier dans HDFS :   
 ```bash
-    hdfs dfs -cat hdfs://namenode:8020/data/input/pg100.txt
+hdfs dfs -cat hdfs://namenode:8020/data/input/pg100.txt
 ```
 ##### contenu : 
 ```bash
-    ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
-    ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
+ceci est un exemple de comptage de mots, un wordcount donc, via une opération de Map Reduce dans le cluster Hadoop
+ceci est une seconde ligne de contenu pour servir de fichier en entrée dans notre exemple de comptage de mots.
 ```
 
  ##### On lance maintenant le comptage de mots contenus dans ce fichier :  
 ```bash
-    /opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar wordcount /data/input/pg100.txt /data/output/wc1
+/opt/hadoop/bin/yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar wordcount /data/input/pg100.txt /data/output/wc1
 ```
   ##### On regarde le résultat du comptage :      
 ```bash
-    hdfs dfs -ls hdfs://namenode:8020/data/output/wc1
+hdfs dfs -ls hdfs://namenode:8020/data/output/wc1
 ```
   ##### On regarde le résultat du comptage (suite) :        
 ```bash
-    hdfs dfs -cat hdfs://namenode:8020/data/output/wc1/part-r-00000
+hdfs dfs -cat hdfs://namenode:8020/data/output/wc1/part-r-00000
 ``` 
 
 ##### Accès à l'interface utilisateur : 
@@ -255,16 +261,16 @@ services:
 
 #### Remarque : bien penser à sortir du conteneur si on est encore connecté suite au "docker exec -it" précédent : 
 ```bash
-    exit 
+exit 
 ```
 #### Le cluster peut maintenant être arrêté avec la commande suivante :
 ```bash
-    docker compose down
+docker compose down
 ``    
 #### Ou, si on avait choisi le cluster plus fourni en version 3.3.6, avec la commande explicite :
 
 ```bash
-    docker compose -f docker-compose-cluster-latest.yml down
+docker compose -f docker-compose-cluster-latest.yml down
 ```
 
 ##### Note:
